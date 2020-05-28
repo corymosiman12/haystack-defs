@@ -32,11 +32,13 @@ def: ^damper-actuator
 is: ^actuator
 regulates: ^air
 ductSection: ^ductSectionType
+controlStrategy: ^controlStrategyType
 childrenFlatten: [^ductSectionType]
 wikipedia: `https://en.wikipedia.org/wiki/Damper_(flow)`
 doc: "Actuator to regulate the flow of air."
 children: [
-  {damper cmd point},
+  {modulating damper cmd point},
+  {twoPosition damper cmd point},
   {damper sensor point},
   ]
 --------------------------------------------------------------------------
@@ -55,11 +57,13 @@ def: ^valve-actuator
 is: ^actuator
 regulates: ^fluid
 pipeSection: ^pipeSectionType
+controlStrategy: ^controlStrategyType
 childrenFlatten: [^fluid, ^pipeSectionType]
 wikipedia: `https://en.wikipedia.org/wiki/Valve`
 doc: "Actuator to regulate the flow of fluid."
 children: [
-  {valve cmd point},
+  {modulating valve cmd point},
+  {twoPosition valve cmd point},
   {valve sensor point},
   ]
 --------------------------------------------------------------------------

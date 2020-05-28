@@ -18,19 +18,58 @@ doc: "Control logic or strategy that is programmed into a system or equip"
 def: ^singleStage
 is: ^choice
 of: ^controlStrategyType
-doc: "Control is implemented via single boolean cmd point."
+doc:
+  Control is implemented via a single boolean {stage:1 cmd point}.  This
+  type of control strategy should be used with coils.
 --------------------------------------------------------------------------
 def: ^multiStage
 is: ^choice
 of: ^controlStrategyType
 doc:
-  Control is implemented via multiple boolean cmd points.  Each
-  point should be modeled separately.
+  Control is implemented via multiple boolean cmd points,
+  {stage:1 cmd point} ... {stage:N cmd point}.  Each point is modeled
+  separately.  This type of control strategy should be used for fans,
+  pumps, and coils.
 --------------------------------------------------------------------------
 def: ^continuous
 is: ^choice
 of: ^controlStrategyType
 doc:
-  Control is implemented via a single numeric cmd point, typically
-  0% - 100%.
+  Control is implemented via a single numeric cmd point.  The point
+  type takes the form {modulating cmd point}, typically
+  0% - 100%.  This type of controls strategy should be used with fans, 
+  pumps, coils, and actuators.
+--------------------------------------------------------------------------
+def: ^singleSpeed
+is: ^choice
+of: ^controlStrategyType
+doc:
+  Control is implemented via a single boolean {run cmd point}.  This type
+  of control strategy should be used with fans and pumps.
+--------------------------------------------------------------------------
+def: ^openClose
+is: ^choice
+of: ^controlStrategyType
+doc:
+  Control is implemented via a single boolean {twoPosition cmd point}.
+  This type of control strategy should be used with actuators.
+--------------------------------------------------------------------------
+
+//////////////////////////////////////////////////////////////////////////
+// Controllable Point Types
+//////////////////////////////////////////////////////////////////////////
+
+--------------------------------------------------------------------------
+def: ^modulating
+is: ^marker
+doc:
+  Marker indicating point can be controlled via a 0% - 100% value.
+  Convention is to utilize 0% as fully closed or off and 100% as fully
+  open, on, or full speed.
+--------------------------------------------------------------------------
+def: ^twoPosition
+is: ^marker
+doc:
+  Marker indicating point can be controlled via a boolean value.
+  Convention is to utilize False as closed and True as open.
 --------------------------------------------------------------------------

@@ -74,6 +74,7 @@ is: ^motor
 moves: ^air
 wikipedia: `https://en.wikipedia.org/wiki/Fan_(machine)`
 ductSection: ^ductSectionType
+controlStrategy: ^controlStrategyType
 childrenFlatten: [^ductSectionType, ^fan]
 doc: "Motor used with a fan to create air flow."
 --------------------------------------------------------------------------
@@ -92,6 +93,7 @@ def: ^pump-motor
 is: ^motor
 moves: ^fluid
 pipeSection: ^pipeSectionType
+controlStrategy: ^controlStrategyType
 wikipedia: `https://en.wikipedia.org/wiki/Pump`
 childrenFlatten: [^fluid, ^pipeSectionType, ^pump]
 doc: "Motor used with a pump to move fluid."

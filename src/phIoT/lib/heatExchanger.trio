@@ -20,10 +20,6 @@ doc:
   Heat exchanger used to heat or cool air.  Coils are sub-components
   of HVAC equipment such as `airHandlingEquip`.
 --------------------------------------------------------------------------
-def: ^modulating
-is: ^marker
-doc: "Marker indicating point can be controlled via a 0% - 100% signal."
---------------------------------------------------------------------------
 
 //////////////////////////////////////////////////////////////////////////
 // Cooling Coils
