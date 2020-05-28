@@ -11,3 +11,26 @@ def: ^controlStrategy
 is: ^marker
 doc: "Control logic or strategy that is programmed into a system or equip"
 --------------------------------------------------------------------------
+def: ^controlStrategyType
+is: ^marker
+doc: "Control logic or strategy that is programmed into a system or equip"
+--------------------------------------------------------------------------
+def: ^singleStage
+is: ^choice
+of: ^controlStrategyType
+doc: "Control is implemented via single boolean cmd point."
+--------------------------------------------------------------------------
+def: ^multiStage
+is: ^choice
+of: ^controlStrategyType
+doc:
+  Control is implemented via multiple boolean cmd points.  Each
+  point should be modeled separately.
+--------------------------------------------------------------------------
+def: ^continuous
+is: ^choice
+of: ^controlStrategyType
+doc:
+  Control is implemented via a single numeric cmd point, typically
+  0% - 100%.
+--------------------------------------------------------------------------
