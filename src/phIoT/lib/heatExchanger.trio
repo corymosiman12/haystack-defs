@@ -14,10 +14,15 @@ doc: "Equipment to transfer heat between two working fluids."
 --------------------------------------------------------------------------
 def: ^coil
 is: ^heatExchanger
+controlStrategy: ^controlStrategyType
 wikipedia: `https://en.wikipedia.org/wiki/Heat_exchanger#HVAC_air_coils`
 doc:
   Heat exchanger used to heat or cool air.  Coils are sub-components
   of HVAC equipment such as `airHandlingEquip`.
+--------------------------------------------------------------------------
+def: ^modulating
+is: ^marker
+doc: "Marker indicating point can be controlled via a 0% - 100% signal."
 --------------------------------------------------------------------------
 
 //////////////////////////////////////////////////////////////////////////
@@ -36,8 +41,9 @@ coolingProcess: ^coolingProcessType
 childrenFlatten: [^ductDeckType, ^ductSectionType]
 doc: "Coil used to cool air."
 children: [
-   {stage:1 cool enable cmd point},
-   {chilled water cool valve cmd point},
+   {stage:1 cool cmd point},
+   {stage:2 cool cmd point},
+   {modulating cool cmd point},
    ]
 --------------------------------------------------------------------------
 
@@ -58,10 +64,31 @@ childrenFlatten: [^ductDeckType, ^ductSectionType]
 doc: "Coil used to heat air."
 children: [
   {stage:1 heat enable cmd point},
-  {hot water heat valve cmd point},
-  {steam heat valve cmd point},
+  {stage:2 heat enable cmd point},
+  {modulating heat cmd point},
   ]
 --------------------------------------------------------------------------
 
+//////////////////////////////////////////////////////////////////////////
+// Heating Cooling Coils
+//////////////////////////////////////////////////////////////////////////
 
+--------------------------------------------------------------------------
+def: ^heatingCoolingCoil
+is: ^coil
+heats: ^air
+cools: ^air
+heatingProcess: ^heatingProcessType
+coolingProcess: ^coolingProcessType
+childrenFlatten: [^ductDeckType, ^ductSectionType]
+doc: "Coil used to heat and air during different operational modes."
+children: [
+  {stage:1 heat enable cmd point},
+  {stage:2 heat enable cmd point},
+  {modulating heat cmd point},
+  {stage:1 cool enable cmd point},
+  {stage:2 cool enable cmd point},
+  {modulating cool cmd point},
+  ]
+--------------------------------------------------------------------------
 

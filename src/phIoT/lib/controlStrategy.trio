@@ -1,0 +1,13 @@
+//
+// Copyright (c) 2019, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   28 May 2020 Cory Mosiman
+//
+
+--------------------------------------------------------------------------
+def: ^controlStrategy
+is: ^marker
+doc: "Control logic or strategy that is programmed into a system or equip"
+--------------------------------------------------------------------------
